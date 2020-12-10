@@ -1,0 +1,81 @@
+{
+  "name": "fitumi",
+  "description": "Fake data generator",
+  "version": "0.0.1",
+  "license": "Apache-2.0",
+  "author": "Chris Engelsma <chris.engelsma@gmail.com>",
+  "main": "index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrisengelsma/fitumi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chrisengelsma/fitumi/issues"
+  },
+  "scripts": {
+    "setup": "npm install",
+    "build": "tsc -p .",
+    "build:watch": "tsc -w -p .",
+    "test": "mocha -r ts-node/register tests/**/*.spec.ts",
+    "toc": "./node_modules/.bin/doctoc README.md --github --maxlevel 3",
+    "doc": "typedoc --out ./docs --mode file --excludePrivate --excludeProtected --tsconfig tsconfig.json ./src",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js -v",
+    "postdoc": "shx cp .nojekyll docs/.nojekyll",
+    "coverage": "nyc npm run test"
+  },
+  "keywords": [
+    "mock",
+    "mocking",
+    "seed",
+    "random",
+    "data",
+    "fake",
+    "faker"
+  ],
+  "dependencies": {
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
+    "doctoc": "^2.0.0",
+    "coveralls": "^3.1.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "shx": "^0.3.3",
+    "rimraf": "^3.0.2",
+    "ts-node": "^9.1.1",
+    "typedoc": "^0.19.2",
+    "npm-run-all": "^4.1.5",
+    "tslint": "^6.1.3",
+    "typescript": "^4.1.2"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "nyc": {
+    "extensions": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "**/*.spec.ts",
+      "tests/**",
+      "**/index.ts"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text"
+    ],
+    "all": false
+  }
+}
